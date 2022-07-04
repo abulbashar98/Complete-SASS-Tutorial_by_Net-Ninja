@@ -1,11 +1,18 @@
+@use 'sass:math';
+
+
+
 .card {
     display: block;
     padding: $base-padding;
     border: $base-border-thickness solid #ddd;
     box-shadow: $base-box-shadow;
+    margin: $base-margin;
+    // border-radius: $base-border-radius / 4;
+    border-radius: math.div($base-border-radius, 4);
 
     .card-title {
-        font-size: $base-font-size;
+        font-size: $font-size-lg;
         padding-bottom: $base-padding;
         font-weight: bold;
     }
@@ -20,3 +27,9 @@
     }
 
 }
+
+
+@debug 'Hello SASS world'; //=====> Debug: Hello SASS world
+@debug math.pow(2, 3); //=====>  Debug: 8
+@debug math.sqrt(144); //=====>  Debug: 12
+@debug math.min(12px, 13px, 11px, 57px); //=====>   Debug: 11px
