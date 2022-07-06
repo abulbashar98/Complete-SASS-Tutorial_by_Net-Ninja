@@ -11,6 +11,59 @@ $error: #d32752;
 $info: #f6c31c;
 
 
+/*-------------- *\
+   Maps Structure
+\*-----------------*/
+/*
+$name: (
+     "key": $value
+);
+*/
+
+// Color Palate
+
+$colors: (
+     "primary": $primary,
+     "secondary": $secondary,
+     "error": $error,
+     "info": $info,
+     "blue": #1919e6,
+     "red": #e61919,
+     "yellow": #e6e619,
+     "green": #19e635,
+     "orange": #ffa600,
+     "purple": #9900ff,
+     "gray": #808080,
+     "black": black,
+     "white": white,
+);
+
+
+// Map functions
+
+// @debug map-get($map: , $key: );
+@debug map-get($colors , "primary"); //===> #326dee
+@debug map-has-key($colors , "secondary"); //====> true
+
+@debug map-remove($colors, "primary");
+//=======>("secondary": #1ac886, "error": #d32752, "info": #f6c31c, "blue": #1919e6, "red": #e61919, "yellow": #e6e619, "green": #19e635, "orange": #ffa600, "purple": #9900ff, "gray": #808080, "black": black, "white": white) 
+
+// @debug map-merge($map1: , $map2: )
+@debug map-merge($colors, ("pink": #fcb0cb));
+
+
+
+
+
+// use of map with selectors 
+
+.test-btn {
+     background-color: map-get($colors, "blue");
+}
+
+
+
+
 // spacing 
 $base-margin: 0.75rem;
 $base-padding: 0.75rem;
