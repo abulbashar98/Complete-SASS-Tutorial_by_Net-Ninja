@@ -1,0 +1,60 @@
+ /*-------------------------------------------------------------- *\
+   Loops to create Classes for text color and Background Color
+ \*------------------------------------------------------------*/
+
+ // text-color
+
+ @each $key,
+ $val in $colors {
+
+     .text-#{$key} {
+         color: $val;
+     }
+
+     // background color
+     .bg-#{$key} {
+         background-color: $val;
+     }
+
+
+
+     /*-----------------------------------------------------------------*\
+   Light and Dark Variation For Each Color in Text and Background
+\*-----------------------------------------------------------------*/
+
+
+     // Light Variation Text
+
+     @for $i from 1 through 9 {
+         .text-#{$key}-light-#{$i} {
+             color: mix(white, $val, $i * 10)
+         }
+     }
+
+     // Light Variation Background
+
+     @for $i from 1 through 9 {
+         .bg-#{$key}-light-#{$i} {
+             background-color: mix(white, $val, $i * 10);
+         }
+     }
+
+
+
+     // Dark Variation Text
+
+     @for $i from 1 through 9 {
+         .text-#{$key}-dark-#{$i} {
+             color: mix(black, $val, $i * 10);
+         }
+     }
+
+     // Dark Variation Background
+
+     @for $i from 1 through 9 {
+         .bg-#{$key}-dark-#{$i} {
+             background-color: mix(black, $val, $i * 10);
+         }
+     }
+
+ }
