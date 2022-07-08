@@ -1,3 +1,6 @@
+ @use 'sass:math';
+
+
  /*-------------------------------------------------------------- *\
    Loops to create Classes for text color and Background Color
  \*------------------------------------------------------------*/
@@ -19,42 +22,69 @@
 
 
      /*-----------------------------------------------------------------*\
-   Light and Dark Variation For Each Color in Text and Background
-\*-----------------------------------------------------------------*/
+        Light and Dark Variation For Each Color in Text and Background
+    \*-----------------------------------------------------------------*/
+
+     /*--------------------------------------------------------------------------------------*\
+        Use of If and Else Statement to Skip Light and Dark Variation for White & Black Color
+    \*---------------------------------------------------------------------------------------*/
 
 
-     // Light Variation Text
+     @if($val  !=white and $val !=black) {
 
-     @for $i from 1 through 9 {
-         .text-#{$key}-light-#{$i} {
-             color: mix(white, $val, $i * 10)
+         // Light Variation Text
+
+         @for $i from 1 through 9 {
+             .text-#{$key}-light-#{$i} {
+                 color: mix(white, $val, $i * 10)
+             }
          }
+
+         // Light Variation Background
+
+         @for $i from 1 through 9 {
+             .bg-#{$key}-light-#{$i} {
+                 background-color: mix(white, $val, $i * 10);
+             }
+         }
+
+
+
+         // Dark Variation Text
+
+         @for $i from 1 through 9 {
+             .text-#{$key}-dark-#{$i} {
+                 color: mix(black, $val, $i * 10);
+             }
+         }
+
+         // Dark Variation Background
+
+         @for $i from 1 through 9 {
+             .bg-#{$key}-dark-#{$i} {
+                 background-color: mix(black, $val, $i * 10);
+             }
+         }
+
      }
 
-     // Light Variation Background
+ }
 
-     @for $i from 1 through 9 {
-         .bg-#{$key}-light-#{$i} {
-             background-color: mix(white, $val, $i * 10);
-         }
+
+
+
+ /*------------------------*\
+  if  else statement Check
+\*-----------------------*/
+
+ @if(math.div(10, 3)==3.34) {
+     .test-if {
+         color: black;
      }
+ }
 
-
-
-     // Dark Variation Text
-
-     @for $i from 1 through 9 {
-         .text-#{$key}-dark-#{$i} {
-             color: mix(black, $val, $i * 10);
-         }
+ @else {
+     .test-else {
+         color: white;
      }
-
-     // Dark Variation Background
-
-     @for $i from 1 through 9 {
-         .bg-#{$key}-dark-#{$i} {
-             background-color: mix(black, $val, $i * 10);
-         }
-     }
-
  }
