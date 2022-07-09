@@ -14,10 +14,60 @@
          color: $val;
      }
 
+     ;
+
+     /*-----------------------------------------------------------------*\
+     Use of Parent Selectors to Produce Pseudo Classes, hover, focus, visited, nth-child, last child. visited
+   \*-----------------------------------------------------------------*/
+
+
+     // Can be done this way
+     /* 
+     .text-hover-#{$key}:hover {
+         color: $val;
+     }
+  */
+
+     // Structure
+
+
+     /*
+     .text-class-#{$key} {
+         &:hover {
+             color: aqua;
+         }
+
+         &:visited {
+             color: blue;
+         }
+
+         &:nth-child(2) {
+             color: green;
+         }
+
+         &:last-child {
+             color: bisque;
+         }
+     }
+   */
+
+     // Use of Parent Selector
+
+     .text-hover-#{$key} {
+         &:hover {
+             color: $val;
+         }
+     }
+
+
+
      // background color
+
      .bg-#{$key} {
          background-color: $val;
      }
+
+     ;
 
 
 
@@ -30,13 +80,21 @@
     \*---------------------------------------------------------------------------------------*/
 
 
-     @if($val  !=white and $val !=black) {
+     @if($val  !=white and $val  !=black) {
 
          // Light Variation Text
 
          @for $i from 1 through 9 {
              .text-#{$key}-light-#{$i} {
                  color: mix(white, $val, $i * 10)
+             }
+
+             // parent selector to produce light variation of Pseudo Classes
+
+             .text-hover-#{$key}-light-#{$i} {
+                 &:hover {
+                     color: mix(white, $val , $i * 10);
+                 }
              }
          }
 
@@ -55,6 +113,14 @@
          @for $i from 1 through 9 {
              .text-#{$key}-dark-#{$i} {
                  color: mix(black, $val, $i * 10);
+             }
+
+             // parent selector to produce Dark Variation of Pseudo Classes
+
+             .text-hover-#{$key}-dark-#{$i} {
+                 &:hover {
+                     color: mix(black, $val , $i * 10);
+                 }
              }
          }
 
